@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+DIR=$1
+
+if [ ! -d "${DIR}" ]; then
+  echo "Supply a directory to lock"
+  exit 1
+fi
+
+if command -v chflags 2>&1 >/dev/null
+then
+  echo "This is macOS, using chflags"
+  echo "You might be prompted for sudo"
+
+  find . -type f -exec sudo chflags -v uchg "{}" \;
+
+  exit 0
+fi
+
+if command -v chattr 2>&1 >/dev/null
+then
+  echo "This is Linux, using chattr"
+  echo "You might be prompted for sudo"
+
+  find . -type f -exec sudo chattr +i "{}" \;
+
+  exit 0
+fi
+
+echo "Don't know what this is. chattr and chflags both unavailable"
+exit 1
