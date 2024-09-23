@@ -22,7 +22,7 @@ then
   echo "This is Linux, using chattr"
   echo "You might be prompted for sudo"
 
-  find . -type f -exec sudo chattr +i "{}" \;
+  find . -type f -exec sudo chattr -V +i "{}" \;
 
   exit 0
 fi
