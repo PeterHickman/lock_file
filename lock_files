@@ -12,7 +12,7 @@ then
   echo "This is macOS, using chflags"
   echo "You might be prompted for sudo"
 
-  find . -type f -exec sudo chflags -v uchg "{}" \;
+  find "${DIR}" -type f -exec sudo chflags -v uchg "{}" \;
 
   exit 0
 fi
@@ -22,7 +22,7 @@ then
   echo "This is Linux, using chattr"
   echo "You might be prompted for sudo"
 
-  find . -type f -exec sudo chattr -V +i "{}" \;
+  find "${DIR}" -type f -exec sudo chattr -V +i "{}" \;
 
   exit 0
 fi
