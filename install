@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+cp lock_files   /usr/local/bin/
+cp unlock_files /usr/local/bin/
+
+chmod +x /usr/local/bin/lock_files
+chmod +x /usr/local/bin/unlock_files
